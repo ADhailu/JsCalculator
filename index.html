@@ -58,13 +58,14 @@
     }
     input{
         color: white;
+        border: 1px solid #fff;
     }
     </style>
     
     <div class="container d-flex flex-column jusitfy-content-center align-items-center vh-100">
 
-    <div class="calculator m-5" style="width: 400px; box-shadow: 5px 5px 5px #333;">
-        <div class="input p-3 m-4">
+    <div class="calculator m-5" style="width: 400px;">
+        <div class="input p-5 m-4">
             <input type="text" class="py-2" id="calculate" style="width: 100%; background-color: black;">
         </div>
 
@@ -121,11 +122,12 @@ let operators = [];
 function addToInput(value){
     let number = parseFloat(value);
     numbers.push(number);
+    input.value = input.value + value;
 }
 
 function clearInput(){
 
-    input.value = ";"
+    input.value = ""
 }
 
 function removeFromInput(){
@@ -186,7 +188,7 @@ function calculate(){
     }
 
     let result = numbers[0];
-    for(let i =0; i<operators.length; i++){
+    for(let i = 0; i < operators.length; i++){
         let operator = operators[i];
         let nextNumber = numbers[numbers.length - 1 - i];
 
@@ -208,6 +210,8 @@ function calculate(){
 
     input.value = result;
 }
+
+
 
 </script>
 </body>
