@@ -13,10 +13,6 @@
         .opp {
         border-radius: 30px !important;
         padding: 30px 30px;
-        /* padding-left: 25px;
-        padding-right: 22px;
-        padding-top: 15px;
-        padding-bottom: 20px; */
         background-color: rgb(255, 115, 0);
         border: none;
         margin-top: 5px;
@@ -30,10 +26,6 @@
         border-radius: 30px !important;
         padding: 30px 30px;
 
-        /* padding-left: 25px;
-        padding-right: 22px;
-        padding-top: 15px;
-        padding-bottom: 20px; */
         background-color: rgb(75, 74, 73);
         border: none;
         margin-top: 5px;
@@ -46,11 +38,6 @@
     .symb{
         border-radius: 30px !important;
         padding: 30px 30px;
-
-        /* padding-left: 25px;
-        padding-right: 22px;
-        padding-top: 15px;
-        padding-bottom: 20px; */
         background-color: rgb(222, 216, 210);
         border: none;
         margin-top: 5px;
@@ -59,13 +46,12 @@
     .symb:hover{
         background-color: rgb(171, 162, 151);
     }
-    .display{
-        /* color: white; */
-        border: 1px solid #333;
+    #display{
+        border-bottom: 1px solid #333;
     }
     </style>
     
-    <div class="container d-flex flex-column jusitfy-content-center align-items-center vh-100">
+    <div class="container mt-5 d-flex flex-column jusitfy-content-center align-items-center">
 
     <div class="calculator m-5" style="width: 400px;">
         <div class="input px-5 py-2 m-4">
@@ -140,7 +126,7 @@ buttons.forEach((item) => {
             displayValue.innerText += item.id;
         }
     }
-})
+});
     </script>
 </body>
 </html>
