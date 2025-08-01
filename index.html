@@ -1,132 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</head>
-<body >
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <style>
-        
-        .opp {
-        border-radius: 30px !important;
-        padding: 30px 30px;
+      .calc-btn {
+        width: 75px;
+        height: 75px;
+        border-radius: 50% !important; /* Makes them perfectly round */
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        /* Flexbox to center content perfectly */
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.2s;
+      }
+
+      /* Operator buttons */
+      .opp {
         background-color: rgb(255, 115, 0);
-        border: none;
-        margin-top: 5px;
-        color: white;
-    }
-    .opp:hover{
+      }
+      .opp:hover {
         background-color: rgb(234, 119, 52);
-    }
+      }
 
-    .num{
-        border-radius: 30px !important;
-        padding: 30px 30px;
-
+      /* Number buttons */
+      .num {
         background-color: rgb(75, 74, 73);
-        border: none;
-        margin-top: 5px;
-        color: white;
-    }
-    .num:hover{
+      }
+      .num:hover {
         background-color: rgb(118, 114, 108);
-    }
+      }
 
-    .symb{
-        border-radius: 30px !important;
-        padding: 30px 30px;
+      /* Top row symbol buttons */
+      .symb {
         background-color: rgb(222, 216, 210);
-        border: none;
-        margin-top: 5px;
         color: black;
-    }
-    .symb:hover{
+      }
+      .symb:hover {
         background-color: rgb(171, 162, 151);
-    }
-    #display{
-        border-bottom: 1px solid #333;
-    }
+      }
+
+      #display {
+        height: 80px;
+        border-bottom: 1px solid #ddd;
+        text-align: right;
+        font-size: 3rem;
+        padding-right: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .calculator {
+        max-width: 380px;
+        background-color: #f8f9fa;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
     </style>
-    
-    <div class="container mt-5 d-flex flex-column jusitfy-content-center align-items-center">
+  </head>
+  <body>
+    <div class="container mt-5 d-flex justify-content-center">
+      <div class="calculator">
+        <div id="display" class="mb-3"></div>
 
-    <div class="calculator m-5" style="width: 400px;">
-        <div class="input px-5 py-2 m-4">
-            <div id="display"></div>
+        <!-- Each row of buttons is wrapped in a .row with gutters -->
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button id="clear" class="calc-btn symb">C</button>
+          </div>
+          <div class="col-3">
+            <button id="back" class="calc-btn symb">←</button>
+          </div>
+          <div class="col-3">
+            <button id="%" class="calc-btn symb">%</button>
+          </div>
+          <div class="col-3">
+            <button id="/" class="calc-btn opp">÷</button>
+          </div>
         </div>
 
-        <div class="center d-flex flex-column jusitfy-content-center align-items-center">
-            <div class="buttons mb-2">
-            
-                <div class="col">
-                    <button id="clear" class="symb">C</button>
-                <button id="back" class="symb" style="font-size: 15px;">&larr;</button>
-                <button id="%" class="symb" style="font-size: 13px;">%</button>
-                <button id="/" class="opp">&divide;</button>
-                </div>
-                <div class="col">
-    
-                    <button id="7" class="num">7</button>
-                    <button id="8" class="num">8</button>
-                    <button id="9" class="num">9</button>
-                    <button id="*" class="opp">&times;</button>
-                </div>
-                <div class="col">
-                    <button id="4" class="num">4</button>
-                    <button id="5" class="num">5</button>
-                <button id="6" class="num">6</button>
-                <button id="-" class="opp">-</button>
-            </div>
-            
-            <div class="col">
-    
-                <button id="1" class="num">1</button>
-                <button id="2" class="num">2</button>
-                <button id="3" class="num">3</button>
-                <button id="+" class="opp">+</button>
-                </div>
-    
-    
-                <div class="col">
-                    <button id="0" style="padding: 20px 68px;" class="num">0</button>
-                <button id="." class="num" style="padding: 23px 30px;">.</button>
-                <button id="equal" class="opp" style="padding: 23px 30px;">=</button>
-                
-                </div>
-    
-    
-            </div>
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button id="7" class="calc-btn num">7</button>
+          </div>
+          <div class="col-3">
+            <button id="8" class="calc-btn num">8</button>
+          </div>
+          <div class="col-3">
+            <button id="9" class="calc-btn num">9</button>
+          </div>
+          <div class="col-3">
+            <button id="*" class="calc-btn opp">×</button>
+          </div>
         </div>
-    </div>
+
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button id="4" class="calc-btn num">4</button>
+          </div>
+          <div class="col-3">
+            <button id="5" class="calc-btn num">5</button>
+          </div>
+          <div class="col-3">
+            <button id="6" class="calc-btn num">6</button>
+          </div>
+          <div class="col-3">
+            <button id="-" class="calc-btn opp">-</button>
+          </div>
+        </div>
+
+        <div class="row g-2 mb-2">
+          <div class="col-3">
+            <button id="1" class="calc-btn num">1</button>
+          </div>
+          <div class="col-3">
+            <button id="2" class="calc-btn num">2</button>
+          </div>
+          <div class="col-3">
+            <button id="3" class="calc-btn num">3</button>
+          </div>
+          <div class="col-3">
+            <button id="+" class="calc-btn opp">+</button>
+          </div>
+        </div>
+
+        <div class="row g-2">
+          <!-- The '0' button spans 2 columns (col-6) -->
+          <div class="col-6">
+            <button
+              id="0"
+              class="calc-btn num"
+              style="width: 100%; border-radius: 40px !important"
+            >
+              0
+            </button>
+          </div>
+          <div class="col-3">
+            <button id="." class="calc-btn num">.</button>
+          </div>
+          <div class="col-3">
+            <button id="equal" class="calc-btn opp">=</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        let displayValue = document.getElementById("display")
-        let buttons = document.querySelectorAll("button");
+      const display = document.getElementById("display");
+      const buttons = document.querySelectorAll("button");
 
-buttons.forEach((item) => {
-    item.onclick = () =>{
-        if(item.id == "clear"){
-            displayValue.innerText = '';
-        }
-        else if(item.id == "back"){
-            let string = displayValue.innerText.toString();
-            displayValue.innerText = string.slice(0, string.length -1);
-        }
-        else if(item.id == "equal"){
-            displayValue.innerText = eval(displayValue.innerText);
-        }
-        else if(displayValue.innerText == '' && item.id == "equal"){
-            displayValue.innerText = 0;
-        }
-        else{
-            displayValue.innerText += item.id;
-        }
-    }
-});
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const buttonId = btn.id;
+
+          if (buttonId === "clear") {
+            display.innerText = "";
+          } else if (buttonId === "back") {
+            display.innerText = display.innerText.slice(0, -1);
+          } else if (buttonId === "equal") {
+            try {
+              // Replace '×' and '÷' with '*' and '/' before evaluating
+              let expression = display.innerText
+                .replace(/×/g, "*")
+                .replace(/÷/g, "/");
+              display.innerText = eval(expression);
+            } catch {
+              display.innerText = "Error";
+            }
+          } else {
+            display.innerText += btn.innerText;
+          }
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
